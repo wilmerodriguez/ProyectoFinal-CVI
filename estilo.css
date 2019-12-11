@@ -1,0 +1,41 @@
+#body{
+  background-color: rgb(40, 40, 40);
+  color: white;
+  font-family: monospace;
+}
+h1{
+  text-align: center;
+}
+#box1 {
+  display: inline-block;
+  margin: 0px;
+  border: 1px solid #ccc;
+}
+#box {
+  display: inline-block;
+  margin: 40px;
+  border: 1px solid #ccc;
+}
+
+#boxTabla {
+  display: inline-block;
+  position: static;
+  margin: 0px;
+  top: 50px;
+  left: - 50px;
+  border: 1px solid #ccc;
+}
+table{
+  font-size: 15px;
+}
+#controles{
+  position: absolute;
+  top: 40px;
+  left: 750px;
+  font-size: 20px;
+}
+#teclas{
+  position: relative;
+  left: -150px;
+  font-size: 15px;
+}

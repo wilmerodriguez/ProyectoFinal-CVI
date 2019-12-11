@@ -1,0 +1,185 @@
+<html>
+
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="stylesheet" type="text/css" href="estilo.css">
+  <title>Learning WebGL &mdash; lesson 4</title>
+  <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+
+
+  <script id="shader-fs" type="x-shader/x-fragment">
+  precision mediump float;
+  varying vec4 vColor;
+  void main(void) {
+    gl_FragColor = vColor;
+  }
+</script>
+
+<script id="shader-vs" type="x-shader/x-vertex">
+attribute vec3 aVertexPosition;
+attribute vec4 aVertexColor;
+uniform mat4 uMVMatrix;
+uniform mat4 uPMatrix;
+varying vec4 vColor;
+void main(void) {
+  gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+  vColor = aVertexColor;
+}
+</script>
+
+</head>
+
+<body id = "body" onload="webGLStart();">
+  <h1>Visualización de datos de las localidades en Bogotá</h1>
+  <div id = "box1">
+    <div id = "box">
+      <canvas id="canvas" style="border: none;" width="500" height="500"></canvas>
+      <h2>Gráficas</h2>
+      <button onclick="cuadricula()">Cuadrícula</button>
+      <button onclick="circunferencia()">Circunferencia</button>
+      <h2>Primitivas</h2>
+      <button onclick="barras()">Barras</button>
+      <button onclick="esferas()">Esferas</button>
+    </div>
+    <div id = "box">
+      <div id = "boxTabla">
+        <table>
+          <tr>
+            <th>Color</th>
+            <th>Localidad</th>
+            <th id = "datos"></th>
+          </tr>
+          <tr><!--PRIMER COLOR-->
+            <th style = background-color:rgb(128,0,0)></th>
+            <th id = "0"></th>
+            <th id = "1"></th>
+          </tr>
+          <tr><!--SEGUNDO COLOR-->
+            <th style = background-color:rgb(170,255,195)></th>
+            <th id = "2"></th>
+            <th id = "3"></th>
+          </tr>
+          <tr><!--TERCER COLOR-->
+            <th style = background-color:rgb(255,215,178)></th>
+            <th id = "4"></th>
+            <th id = "5"></th>
+          </tr>
+          <tr><!--CUARTO COLOR-->
+            <th style = background-color:rgb(0,128,128)></th>
+            <th id = "6"></th>
+            <th id = "7"></th>
+          </tr>
+          <tr><!--QUINTO COLOR-->
+            <th style = background-color:rgb(0,0,128)></th>
+            <th id = "8"></th>
+            <th id = "9"></th>
+          </tr>
+          <tr><!--SEXTO COLOR-->
+            <th style = background-color:rgb(255,255,196)></th>
+            <th id = "10"></th>
+            <th id = "11"></th>
+          </tr>
+          <tr><!--SEPTIMO COLOR-->
+            <th style = background-color:rgb(240,50,230)></th>
+            <th id = "12"></th>
+            <th id = "13"></th>
+          </tr>
+          <tr><!--OCTAVO COLOR-->
+            <th style = background-color:rgb(0,130,200)></th>
+            <th id = "14"></th>
+            <th id = "15"></th>
+          </tr>
+          <tr><!--NOVENO COLOR-->
+            <th style = background-color:rgb(230,190,255)></th>
+            <th id = "16"></th>
+            <th id = "17"></th>
+          </tr>
+          <tr> <!--DECIMO COLOR-->
+            <th style = background-color:rgb(60,180,75)></th>
+            <th id = "18"></th>
+            <th id = "19"></th>
+          </tr>
+          <tr> <!--UNDECIMO COLOR-->
+            <th style = background-color:rgb(70,240,240)></th>
+            <th id = "20"></th>
+            <th id = "21"></th>
+          </tr>
+          <tr><!--DECIMOSEGUNDO COLOR-->
+            <th style = background-color:rgb(245,130,48)></th>
+            <th id = "22"></th>
+            <th id = "23"></th>
+          </tr>
+          <tr><!--DECIMOTERCERO COLOR-->
+            <th style = background-color:rgb(145,30,180)></th>
+            <th id = "24"></th>
+            <th id = "25"></th>
+          </tr>
+          <tr><!--DECIMOCUARTO COLOR-->
+            <th style = background-color:rgb(255,255,25)></th>
+            <th id = "26"></th>
+            <th id = "27"></th>
+          </tr>
+          <tr><!--DECIMOQUINTO COLOR-->
+            <th style = background-color:rgb(230,25,75)></th>
+            <th id = "28"></th>
+            <th id = "29"></th>
+          </tr>
+          <tr><!--DECIMOSEXTO COLOR-->
+            <th style = background-color:rgb(250,165,190)></th>
+            <th id = "30"></th>
+            <th id = "31"></th>
+          </tr>
+          <tr><!--DECIMOSEPTIMO COLOR-->
+            <th style = background-color:rgb(128,128,0)></th>
+            <th id = "32"></th>
+            <th id = "33"></th>
+          </tr>
+          <tr><!--DECIMOOCTAVO COLOR-->
+            <th style = background-color:rgb(0,0,255)></th>
+            <th id = "34"></th>
+            <th id = "35"></th>
+          </tr>
+          <tr><!--DECIMONOVENO COLOR-->
+            <th style = background-color:rgb(170,110,40)></th>
+            <th id = "36"></th>
+            <th id = "37"></th>
+          </tr>
+          <tr><!--VIGESIMO COLOR-->
+            <th style = background-color:rgb(0,255,0)></th>
+            <th id = "38"></th>
+            <th id = "39"></th>
+          </tr>
+        </tr>
+        <tr>
+          <th></th>
+          <th id = "total"></th>
+          <th id = "totalNum"></th>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<div id = "controles">
+  <h3>Controles</h3>
+  <div id="teclas">
+    Usar las siguientes teclas para girar <br> el modelo: <br><br>
+    (Arriba / Abajo): Rotación sobre el eje X <br>
+    (Der. / Izq.): Rotación sobre el eje Y <br>
+    (a / d): Rotación sobre el eje Z <br>
+    (w / s): Aumentar y disminuir tamaño <br>
+    (Av Pag / Re Pag) Aumentar y disminuir escena
+
+  </div>
+
+</div>
+<p id = "inner"></p>
+</body>
+<script src = "glMatrix.js"> </script>
+<script src = "webgl-utils.js"> </script>
+<script src = "datos.js"> </script>
+<script src = "main.js"> </script>
+
+<script src = "llenarTabla.js"> </script>
+<script src = "buffers.js"></script>
+<script src = "draw.js"></script>
+</html>
