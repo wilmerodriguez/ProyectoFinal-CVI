@@ -42,3 +42,11 @@ En este programa se selecciona la manera en que se dibujará la escena, en cuadr
 ### llenarTabla.js
 
 - Este programa llena la tabla de la página web con los datos de las localidades de Bogotá.
+
+### glMatrix.js
+
+- Este programa se usa para los cálculos de las transformaciones de las matrices.
+
+### webgl-utils.js
+
+- Este programa se usa para utilizar la función `requestAnimFrame()` que permite la animación en la escena.
