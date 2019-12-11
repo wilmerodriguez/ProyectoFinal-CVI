@@ -94,7 +94,7 @@ function esferas(){
     var pMatrix = mat4.create();
 
     // Funciones para que las transformaciones de matrices solo afecten
-    // cada primitiva pero no la escena completa.
+    // cada primitiva sin afectar el resto.
     function mvPushMatrix() {
         var copy = mat4.create();
         mat4.set(mvMatrix, copy);
@@ -134,6 +134,8 @@ function esferas(){
 
     }
 
+// Se configuran las teclas para girar y modificar el tamaño
+// de los objetos en la escena.
 var currentlyPressedKeys = {};
 
 function handleKeyDown(event) {
