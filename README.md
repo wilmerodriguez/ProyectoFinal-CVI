@@ -17,7 +17,8 @@ A continuación se explica lo que hace cada archivo.
 ### main.js:
 
 - Se carga el contexto para WebGL y se configuran los programas de los shaders.
-- Se configuran las teclas que se usaran para girar y aumentar tamaño de los objetos de la escena en las líneas de código 137 a 190. 
+- Se configuran las teclas que se usaran para girar y aumentar tamaño de los objetos de la escena en las líneas de código 137 a 190.
+- Se configuran las funciones `mvPushMatrix()` y `mvPopMatrix()` que se usan para transformar cada primitiva y no transformar toda la escena al hacer uso de la transformada de matrices.
 
 ### buffers.js
 
