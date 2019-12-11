@@ -29,6 +29,7 @@ function esferas(){
   primitivaSel = 1;
 }
 
+//Inicializar contexto Web GL
     var gl;
     function initGL(canvas) {
         try {
@@ -149,43 +150,43 @@ function handleKeyUp(event) {
 
 function handleKeys() {
         if (currentlyPressedKeys[33]) {
-            // Page Up
+            // Av Pag
             zAug -= 0.3;
         }
         if (currentlyPressedKeys[34]) {
-            // Page Down
+            // Re Pag
             zAug += 0.3;
         }
         if (currentlyPressedKeys[37]) {
-            // Left cursor key
+            // Izq
             yRot -= 3;
         }
         if (currentlyPressedKeys[39]) {
-            // Right cursor key
+            // Der
             yRot += 3;
         }
         if (currentlyPressedKeys[38]) {
-            // Up cursor key
+            // Arriba
             xRot -= 3;
         }
         if (currentlyPressedKeys[40]) {
-            // Down cursor key
+            // Abajo
             xRot += 3;
         }
         if (currentlyPressedKeys[65]) {
-            // Up cursor key
+            // a
             zRot -= 3;
         }
         if (currentlyPressedKeys[68]) {
-            // Down cursor key
+            // d
             zRot += 3;
         }
         if (currentlyPressedKeys[87]) {
-            // Up cursor key
+            // w
             factorAumento += 0.1;
         }
         if (currentlyPressedKeys[83]) {
-            // Up cursor key
+            // s
             factorAumento -= 0.1;
         }
 
