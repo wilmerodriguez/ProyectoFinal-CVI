@@ -8,16 +8,24 @@ A continuación se explica lo que hace cada archivo.
 - Se configura las variables para los programas de vertex y fragment shaders.
 - Se configura el espacio del canvas en donde se renderiza la escena.
 - Se configura la tabla para ver los datos de las localidades. 
-- Se cargan las librerías js que se usan para la creación de las primitivas y su posterior dibujo.
+- Se cargan los archivos js que se usan para la creación de las primitivas y su posterior dibujo. También, se usan para cargar los datos necesarios para el dibujo de la escena.
+- Se hace el llamado a la función `WebGLStart()` en línea de código 32 para iniciar llamado al resto de funciones que cargarán los buffers y configuraran los shaders para el renderizado final.
 
 ### estilos.css
 
 - Se configura la página web con el fondo oscuro y  se configura el posicionamiento del canvas, la tabla, los botones y demás elementos. Igualmente, se configura el tamaño de letra y su color.
 
 ### main.js:
-
-- Se carga el contexto para WebGL y se configuran los programas de los shaders.
-- Se configuran las teclas que se usaran para girar y aumentar tamaño de los objetos de la escena en las líneas de código 137 a 190.
+- La función `WebGLStart();` se ejecuta a partir de la línea de código 196.
+- Se inicia el contexto WebGL con la función `initGL(canvas);`.
+- Se configuran los shaders con la función `initShaders();`.
+- Se cargan los buffers con la función `initBuffers();`, la cual está en el archivo **buffers.js**.
+- Se llama a la `función animar();`. Esta función se ejecuta en la línea de código 129.
+- Se llenan los datos de la tabla en la página web con la función `llenarTabla();`, la cual está en el archivo **llenarTabla.js** 
+- Se ejecuta la función `requestAnimFrame(animar);` para que el renderizado de la escena se ejecute constantemente, esta función se encuentra en el archivo **webgl-utils.js**.
+- Se ejecuta la función `handleKeys();`, la cual configura las teclas que se usaran para girar y aumentar tamaño de los objetos de la escena en las líneas de código 137 a 193.
+- Se ejecuta la función `drawScene();`, la cual dibuja la escena. Esta se encuentra en el archivo **draw.js**.
+- Se ejecuta la función `animate();`, la cual permite cambio en el tiempo para la animación de la escena.
 - Se configuran las funciones `mvPushMatrix()` y `mvPopMatrix()` que se usan para transformar cada cada primitiva en la escena sin que se afecten las otras primitivas al hacer uso de la transformada de matrices.
 
 ### buffers.js
