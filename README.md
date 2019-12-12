@@ -42,7 +42,7 @@ En este programa se selecciona la manera en que se dibujará la escena, en cuadr
 - Se utilizan las transformaciones de matrices en las líneas de código 18 al 23, 72 - 76, y 99 - 103 para programar el giro y modificación de tamaño de los objetos en la escena. 
 - La matriz de transformación de translación en la línea 10 se usa para acercar o alejar la vista sobre los objetos.
 - Los ciclos `for` se utilizan para configurar la disposición de cuadrícula y de circunferencia. Esto, para posicionar las primitivas en los lugares correspondientes.
-- Las transformaciones de mat4.scale se usan para ajustar el tamaño de las primitivas según los datos que se están visualizando. Estos datos se toman del arreglo correspondiente.
+- Las transformaciones de `mat4.scale` se usan para ajustar el tamaño de las primitivas según los datos que se están visualizando. Estos datos se toman del arreglo correspondiente: `poblacion[datos]` para barras y `espacioPublico[datos]` para las esferas.
 - Las funciones `drawCube()` y `drawSphere()` permiten unir los buffers con los programas shaders para dibujar las primitivas. 
 
 ### datos.js
