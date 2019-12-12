@@ -30,8 +30,8 @@ A continuación se explica lo que hace cada archivo.
 
 ### buffers.js
 
-- Se cargan vertices e indices para dos primitivas, un cubo (barra en la escena) y una esfera.
-- Se cargan 20 buffers de colores por primitiva. Me fue necesario configurar todos estos buffers para distinguir los colores de los objetos en la escena.
+- En las líneas de código 51 a 166 se configuran los vértices e índices para dos primitivas, un cubo (barra en la escena) y una esfera.
+- Luego, se cargan 20 buffers de colores por primitiva. Me fue necesario configurar todos estos buffers para distinguir los colores de los objetos en la escena.
 
 ### draw.js
 
